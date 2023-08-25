@@ -14,7 +14,7 @@ class PascalVOCDataset(torch.utils.data.Dataset):
 
     CLASSES = (
         "__background__ ",
-        "pups",
+        "virus",
         "novirus",
     )
 
