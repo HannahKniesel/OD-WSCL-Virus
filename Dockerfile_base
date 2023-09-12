@@ -1,0 +1,37 @@
+FROM pytorch/pytorch:1.7.1-cuda11.0-cudnn8-devel
+# RUN rm /etc/apt/sources.list.d/cuda.list
+# RUN rm /etc/apt/sources.list.d/nvidia-ml.list
+# RUN apt-key del 7fa2af80
+# RUN apt-get update && apt-get install -y --no-install-recommends wget
+# RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
+
+# RUN wget https://nvidia.github.io/nvidia-docker/gpgkey --no-check-certificate
+# RUN apt-key add gpgkey
+# RUN distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+# RUN apt install -y curl
+# RUN curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | tee /etc/apt/sources.list.d/nvidia-docker.list
+# RUN apt-get update
+# RUN apt-get install -y nvidia-container-toolkit
+
+
+
+# ENV TORCH_CUDA_ARCH_LIST="7.5"
+# ENV TORCH_CUDA_ARCH_LIST="8.0"
+
+# cd OD-WSCL-Virus/
+# pip install ninja yacs cython matplotlib tqdm opencv-python tensorboardX pycocotools
+# cd apex/
+# pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+# cd ..
+
+# python setup.py build develop
+# apt install -y libgl1
+# apt install -y libglib2.0-0
+# pip install wandb
+# pip install fvcore
+
+
+# ADD installer.sh /reproducability/installer.sh
+# ADD Dockerfile /reproducability/Dockerfile
+# WORKDIR /workspace/
+# RUN  /reproducability/installer.sh

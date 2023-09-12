@@ -1,0 +1,31 @@
+FROM pytorch/pytorch:1.7.1-cuda11.0-cudnn8-devel
+RUN rm /etc/apt/sources.list.d/cuda.list
+RUN rm /etc/apt/sources.list.d/nvidia-ml.list
+RUN apt-key del 7fa2af80
+RUN apt-get update && apt-get install -y --no-install-recommends wget
+
+    1  ls
+    2  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
+    3  dpkg -i cuda-keyring_1.0-1_all.deb
+    4  apt-get update && apt-get install -y git
+    5  cd /workspace/
+    6  ls
+    7  git clone https://github.com/HannahKniesel/OD-WSCL-Virus.git
+    8  pip install ninja yacs cython matplotlib tqdm opencv-python tensorboardX pycocotools
+    9  git clone --branch 22.04-dev https://github.com/NVIDIA/apex.git
+   10  cd apex/
+   11  pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+   12  cd ..
+   13  ls
+   14  cd OD-WSCL-Virus/
+   15  python setup.py build develop
+   16  apt install -y libgl1
+   17  apt install -y libglib2.0-0
+   18  pip install wandb
+   19  pip install git+https://github.com/facebookresearch/fvcore.git
+   20  export WANDB_API_KEY="f9ac711f43521f970835a198be72917607413691"
+   21  cp /tmp/datasets/ ./
+   22  cp -r /tmp/datasets/ ./
+   23  cp -r /tmp/proposal/ ./
+   24  python -m torch.distributed.launch --nproc_per_node=1 tools/train_net.py --config-file "configs/voc/test.yaml" OUTPUT_DIR OD-WSCL/output/test nms 0.1 lmda 0.03 iou 0.5 temp 0.2
+   25  history
