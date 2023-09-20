@@ -12,11 +12,19 @@ from .coco import unique_boxes
 
 class PascalVOCDataset(torch.utils.data.Dataset):
 
-    CLASSES = (
+    """CLASSES = (
         "__background__ ",
         "virus",
         "novirus",
+    )"""
+    CLASSES = (
+        "__background__ ",
+        "novirus",
+        "enveloped",
+        "budding",
+        "naked"
     )
+    
 
     """CLASSES = (
         "__background__ ",
