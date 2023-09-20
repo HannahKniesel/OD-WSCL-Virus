@@ -1,4 +1,5 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+import torch 
 from wetectron import _C
 from apex import amp
 
