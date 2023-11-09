@@ -12,18 +12,20 @@ from .coco import unique_boxes
 
 class PascalVOCDataset(torch.utils.data.Dataset):
 
-    """CLASSES = (
+    CLASSES = (
         "__background__ ",
         "virus",
         "novirus",
-    )"""
-    CLASSES = (
+    )
+
+    print(CLASSES)
+    """CLASSES = (
         "__background__ ",
         "novirus",
         "enveloped",
         "budding",
         "naked"
-    )
+    )"""
     
 
     """CLASSES = (
@@ -190,8 +192,7 @@ class PascalVOCDataset(torch.utils.data.Dataset):
             
             gt_classes.append(self.class_to_ind[name])
             difficult_boxes.append(difficult)
-        """import pdb 
-        pdb.set_trace()"""
+
         size = target.find("size")
         im_info = tuple(map(int, (size.find("height").text, size.find("width").text)))
 
