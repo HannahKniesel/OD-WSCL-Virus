@@ -53,7 +53,7 @@ class WSDDNLossComputation(object):
     def __init__(self, cfg):
         self.type = "WSDDN"
 
-    def __call__(self, class_score, det_score, ref_scores, proposals, targets, epsilon=1e-10):
+    def __call__(self, class_score, det_score, ref_scores, proposals, targets, epsilon=1e-8):
         """
         Arguments:
             class_score (list[Tensor])
